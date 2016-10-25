@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace Oblig2
 {
     partial class Form1
     {
