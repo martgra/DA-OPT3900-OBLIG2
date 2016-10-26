@@ -8,9 +8,7 @@ namespace Oblig2
 {
     class Fitness
     {
-        static void Main(string[] args)
-        {
-        }
+      
 
         static int fitness(int[,] a, int[] b) //int[][] a hvis ararry av arrays
         {
