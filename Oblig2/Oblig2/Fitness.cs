@@ -8,7 +8,7 @@ namespace Oblig2
 {
     class Fitness
     {
-      
+
 
         static int fitness(int[,] a, int[] b) //int[][] a hvis ararry av arrays
         {
@@ -69,3 +69,4 @@ namespace Oblig2
             return ranked;
         }
     }
+}
