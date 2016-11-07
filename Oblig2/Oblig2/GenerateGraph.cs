@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Oblig2
 {
-    class GenerateGraph
+    public class GenerateGraph
     {
-        static int[,] genGraph(int size, int mN)
+        public static int[,] genGraph(int size, int mN)
         {
             int[,] nodes = new int[size, mN]; //node-nettet, size er antall noder, mN er maks naboer
 

@@ -8,7 +8,7 @@ namespace Oblig2
 {
     class PrintGraph
     {
-        static string print(int[,] graph)
+        public static string print(int[,] graph)
         {
             int i, j;
 

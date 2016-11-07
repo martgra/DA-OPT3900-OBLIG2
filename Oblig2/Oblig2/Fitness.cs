@@ -10,7 +10,7 @@ namespace Oblig2
     {
 
 
-        static int fitness(int[,] nodeNet, int[] color)
+        public static int fitness(int[,] nodeNet, int[] color)
         {
 
             //nodeNet = array over node nettverket

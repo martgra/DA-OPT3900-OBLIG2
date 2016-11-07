@@ -8,7 +8,7 @@ namespace Oblig2
 {
     class Genocide
     {
-        List<int[]> killOffWeaklings(int[][] sortedGenomes)
+        public static List<int[]> killOffWeaklings(int[][] sortedGenomes)
         {
             List < int[] > newGeneration = new List<int[]>();
 

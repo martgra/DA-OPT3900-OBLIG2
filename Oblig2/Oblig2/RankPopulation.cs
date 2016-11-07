@@ -8,7 +8,7 @@ namespace Oblig2
 {
     class RankPopulation
     {
-        static int[][] rankSort(int[][] a, int[] c)
+        public static int[][] rankSort(int[][] a, int[] c)
         {
             //a = array over node nettverket
             //c = array over fitness
