@@ -4,59 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace Oblig2
 {
-    class Program
+    class GenerateGraph
     {
-        static void Main(string[] args)
-        {
-            int[,] graph = genGraph(10, 9);
-
-
-
-
-            Console.WriteLine(print(graph));
-
-
-            int[][] pop = makeFirstPopulation(graph);
-
-            int[] popFitness = new int[10];
-
-            for (int i = 0; i < popFitness.Length; i++)
-            {
-                popFitness[i] = fitness(graph, pop[i]);
-            }
-
-            pop = rankSort(pop, popFitness);
-
-            for (int i = 0; i < popFitness.Length; i++)
-            {
-                Console.Write(popFitness[i] + " ");
-            }
-
-            Console.ReadLine();
-
-        }
-
-        static string print(int[,] graph)
-        {
-            int i, j;
-
-            string tekst = "";
-
-            for (i = 0; i < graph.GetLength(0); i++)
-            {
-                for (j = 0; j < graph.GetLength(1); j++)
-                {
-                    tekst += graph[i, j] + "\t";
-                }
-
-                tekst += "\n";
-            }
-
-            return tekst;
-        }
-
         static int[,] genGraph(int size, int mN)
         {
             int[,] nodes = new int[size, mN]; //node-nettet, size er antall noder, mN er maks naboer
@@ -174,94 +125,6 @@ namespace ConsoleApplication1
             }
 
             return nodes;
-        }
-
-        static int fitness(int[,] nodeNet, int[] color)
-        {
-
-            //nodeNet = array over node nettverket
-            //color = array over verdien hver node har
-
-            int score = 0; //fitness verdien for nettverket
-
-            int i, j;
-
-            for (i = 0; i < nodeNet.GetLength(0); i++)
-            {
-                for (j = 0; j < nodeNet.GetLength(1); j++)
-                {
-                    if (nodeNet[i, j] != -1)
-                    {
-                        if (color[i] != color[nodeNet[i, j]]) //hvis verdien til noden er ulik verdien til noden den er koblet til
-                            score++;
-                    }
-                }
-            }
-
-            //ettersom node x er koblet til y; er y koblet til x, så det vil telles dobbelt opp
-            score = score / 2;
-
-            return score;
-        }
-
-
-        static int[][] rankSort(int[][] a, int[] c)
-        {
-            //a = array over node nettverket
-            //c = array over fitness
-
-            int[][] ranked = a;
-            int[] tmpArr; //for å holde på variabler midlertidig
-            int tmp;
-            int i, j;
-
-            //klassisk bubblesort
-            for (i = 0; i < c.Length; i++)
-            {
-                //- (i + 1) fordi minste synker alltid til bunn så trengs ikke å bli sjekket mot lenger)
-                for (j = 0; j < (c.Length - (i + 1)); j++)
-                {
-                    if (c[j] < c[j + 1]) //hvis neste i arrayet er større
-                    {
-                        tmp = c[j + 1];
-                        tmpArr = ranked[j + 1];
-
-                        c[j + 1] = c[j];
-                        ranked[j + 1] = ranked[j];
-                        c[j] = tmp;
-                        ranked[j] = tmpArr;
-                    }
-                }
-
-            }
-
-            return ranked;
-        }
-
-
-        static int[][] makeFirstPopulation(int[,] nodeNet)
-        {
-            int initialPopSize = 10;
-            int nodeAmount = nodeNet.GetLength(0); //minst 500 som krav fra oppgaven
-            int[][] population = new int[initialPopSize * 2][]; //*2 for å sikkre partall
-            int i, j;
-
-            Random color = new Random();
-
-            for (i = 0; i < initialPopSize * 2; i++)
-            {
-                population[i] = new int[nodeAmount];
-
-                for (j = 0; j < nodeAmount; j++)
-                {
-                    if (i < initialPopSize) //for de 10 første
-                    {
-                        population[i][j] = color.Next(0, 3); //0 = svart, 1 = hvit, 2 = rød
-                    }
-                }
-            }
-
-            return population;
         }
     }
 }

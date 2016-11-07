@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BirthPopulation.cs" />
     <Compile Include="CrossOver.cs" />
     <Compile Include="Fitness.cs" />
     <Compile Include="Form1.cs">
@@ -54,9 +55,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerateGraph.cs" />
     <Compile Include="Genocide.cs" />
+    <Compile Include="PrintGraph.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RankPopulation.cs" />
     <Compile Include="SelectMates.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
