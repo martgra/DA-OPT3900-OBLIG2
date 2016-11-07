@@ -8,13 +8,13 @@ namespace Oblig2
 {
     class SelectMates
     {
-        Array[,] pairMates(List<int[]> population)
+        int[,][] pairMates(List<int[]> population)
         {
             
             int mateOne;
             int mateTwo;
             int j = population.Count;
-            Array[,] mates = new Array[j / 2, 2];
+            int [,] [] mates = new int [j / 2, 2][];
 
             //select random parent one from population
             Random rnd = new Random();
