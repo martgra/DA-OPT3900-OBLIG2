@@ -14,9 +14,31 @@ namespace Oblig2
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+    
+            int[,] graph = GenerateGraph.genGraph(500, 9);
+            int[][] pop = BirthPopulation.makeFirstPopulation(graph);
+            List<int[]> newGeneration = CreateList.createLinkedList(pop);
+            int[][] pairs;
+            int[][] birthcontroll = new int [pop.Length*2][];
+            int[] popFitness;
+
+            for (int i = 0; i < 100; i++)
+            {
+                pairs = SelectMates.pairMates(newGeneration);
+                birthcontroll = CrossOver.TwoPointCrossover(pairs);
+                popFitness = Fitness.fitness(graph, birthcontroll);
+                pop = RankPopulation.rankSort(birthcontroll, popFitness);
+                newGeneration = Genocide.killOffWeaklings(pop);
+                for (int z = 0; z < popFitness.Length; z++)
+                {
+                    Console.Write(popFitness[z] + " ");
+                }
+                Console.WriteLine();
+          
+            }
+
+            Console.ReadLine();
+
         }
     }
 }

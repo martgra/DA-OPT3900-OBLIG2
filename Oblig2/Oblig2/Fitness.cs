@@ -10,30 +10,32 @@ namespace Oblig2
     {
 
 
-        static int fitness(int[,] nodeNet, int[] color)
+        public static int [] fitness(int[,] nodeNet, int[][] color)
         {
 
             //nodeNet = array over node nettverket
             //color = array over verdien hver node har
 
-            int score = 0; //fitness verdien for nettverket
-
-            int i, j;
-
-            for (i = 0; i < nodeNet.GetLength(0); i++)
+            int [] score = new int[color.GetLength(0)]; //fitness verdien for nettverket
+            for (int h = 0; h < color.Length; h++)
             {
-                for (j = 0; j < nodeNet.GetLength(1); j++)
+
+                for (int i = 0; i < nodeNet.GetLength(0); i++)
                 {
-                    if (nodeNet[i, j] != -1)
+                    for (int j = 0; j < nodeNet.GetLength(1); j++)
                     {
-                        if (color[i] != color[nodeNet[i, j]]) //hvis verdien til noden er ulik verdien til noden den er koblet til
-                            score++;
+                        if (nodeNet[i, j] != -1)
+                        {
+                            if (color[h][i] != color[h][nodeNet[i, j]]) //hvis verdien til noden er ulik verdien til noden den er koblet til
+                                score[h]++;
+                        }
                     }
                 }
+                score[h] = score[h] / 2;
             }
 
             //ettersom node x er koblet til y; er y koblet til x, så det vil telles dobbelt opp
-            score = score / 2;
+            
 
             return score;
         }
