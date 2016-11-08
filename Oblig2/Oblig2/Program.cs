@@ -22,7 +22,7 @@ namespace Oblig2
             int[][] birthcontroll = new int [pop.Length*2][];
             int[] popFitness;
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 pairs = SelectMates.pairMates(newGeneration);
                 birthcontroll = CrossOver.TwoPointCrossover(pairs);
