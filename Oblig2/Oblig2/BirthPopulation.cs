@@ -10,7 +10,7 @@ namespace Oblig2
     {
         public static int[][] makeFirstPopulation(int[,] nodeNet)
         {
-            int initialPopSize = 10;
+            int initialPopSize = 100;
             int nodeAmount = nodeNet.GetLength(0); //minst 500 som krav fra oppgaven
             int[][] population = new int[initialPopSize][]; //*2 for å sikkre partall
             int i, j;

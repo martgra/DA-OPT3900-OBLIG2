@@ -21,12 +21,13 @@ namespace Oblig2
             int[][] pairs;
             int[][] birthcontroll = new int [pop.Length*2][];
             int[] popFitness;
-
-            for (int i = 0; i < 10; i++)
+            int[][] tinker;
+            for (int i = 0; i < 2000; i++)
             {
                 pairs = SelectMates.pairMates(newGeneration);
                 birthcontroll = CrossOver.TwoPointCrossover(pairs);
-                popFitness = Fitness.fitness(graph, birthcontroll);
+                tinker = Mengele.tinker(birthcontroll);
+                popFitness = Fitness.fitness(graph, tinker);
                 pop = RankPopulation.rankSort(birthcontroll, popFitness);
                 newGeneration = Genocide.killOffWeaklings(pop);
                 for (int z = 0; z < popFitness.Length; z++)

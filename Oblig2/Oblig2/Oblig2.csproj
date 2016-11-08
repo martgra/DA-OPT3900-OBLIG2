@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="GenerateGraph.cs" />
     <Compile Include="Genocide.cs" />
+    <Compile Include="Mengele.cs" />
     <Compile Include="PrintGraph.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
