@@ -8,32 +8,41 @@ namespace Oblig2
 {
     class CrossOver
     {
-        public static int[][] TwoPointCrossover(int[][] mates)
+        public static int[][] TwoPointCrossover(int [][] pairs)
         {
-            int[][] children = new int [mates.Length*2][];
-            Array.Copy(mates, children, mates.Length);
+            int [][] newGeneration = new int [pairs.Length*2][];
 
-            for (int i = 0; i < mates.Length; i+=2)
+            for (int k = 0; k < pairs.Length; k++)
             {
-                children[i+10] = new int[mates[0].Length];
-                children[i + 11] = new int[mates[0].Length];
-                Array.Copy(mates[i], children[10 + i], mates[0].Length);
-                Array.Copy(mates[i+1], children[11 + i], mates[0].Length);
-                Random rnd = new Random();
-                int firstPoint = rnd.Next(0, mates[0].Length);
-                int secondPoint = rnd.Next(firstPoint, mates[0].Length);
-                for (int j = firstPoint; j < secondPoint; j++)
+                newGeneration[k] = new int[pairs[0].Length];
+                newGeneration[k + pairs.Length] = new int[pairs[0].Length];
+                for (int j = 0; j < pairs[1].Length; j++)
                 {
-                    children[10 + i][j] = mates[i + 1][j];
-                    children[11 + i][j] = mates[i][j];
-                } 
+                    
+                    newGeneration[k][j] = pairs[k][j];
+                    newGeneration[k + pairs.Length][j] = pairs[k][j];
+                }
+            }
+            
+
+            Random rnd = new Random();
+
+            for (int i = pairs.Length; i < newGeneration.Length - 1; i += 2)
+            {
+
+                int firstPoint = rnd.Next(0, pairs[0].Length - 1);
+                int secondPoint = rnd.Next(firstPoint, pairs[0].Length - 1);
+                for (int j = firstPoint; j <= secondPoint; j++)
+                {
+                    newGeneration[i][j] = newGeneration[(i+1)-pairs.Length][j];
+                    newGeneration[i + 1][j] = newGeneration[i-pairs.Length][j];
+                }
+
 
 
             }
 
-               
-
-            return children;
+            return newGeneration;
         }
     }
 }

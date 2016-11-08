@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BirthPopulation.cs" />
+    <Compile Include="CreateList.cs" />
     <Compile Include="CrossOver.cs" />
     <Compile Include="Fitness.cs" />
     <Compile Include="Form1.cs">
