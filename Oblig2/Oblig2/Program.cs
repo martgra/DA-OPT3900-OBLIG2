@@ -28,6 +28,8 @@ namespace Oblig2
             int currentResult;
             List<int> results = new List<int>();
             int previousResult = 0;
+            string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
 
             while (!done)
             {
@@ -47,7 +49,12 @@ namespace Oblig2
                 currentResult = popFitness[0];
                 results.Add(popFitness[0]);
 
-                if (currentResult == previousResult)
+                using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(mydocpath + @"\test.txt", true))
+                {
+                    file.WriteLine(popFitness[0].ToString());
+                }
+                    if (currentResult == previousResult)
                     teller++;
 
                 if (teller > 1000)
