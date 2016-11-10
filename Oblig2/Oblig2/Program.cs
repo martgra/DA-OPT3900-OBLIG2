@@ -16,7 +16,7 @@ namespace Oblig2
         {
     
             int[,] graph = GenerateGraph.genGraph(500, 9);
-            int[][] pop = BirthPopulation.makeFirstPopulation(graph);
+            int[][] pop = BirthPopulation.makeFirstPopulation(20, graph);
             List<int[]> newGeneration = CreateList.createLinkedList(pop);
             int[][] pairs;
             int[][] birthcontroll = new int [pop.Length*2][];

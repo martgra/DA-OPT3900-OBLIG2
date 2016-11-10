@@ -8,9 +8,9 @@ namespace Oblig2
 {
     class BirthPopulation
     {
-        public static int[][] makeFirstPopulation(int[,] nodeNet)
+        public static int[][] makeFirstPopulation(int initialPopSize, int[,] nodeNet)
         {
-            int initialPopSize = 10;
+            initialPopSize = 10;
             int nodeAmount = nodeNet.GetLength(0); //minst 500 som krav fra oppgaven
             int[][] population = new int[initialPopSize][]; //*2 for å sikkre partall
             int i, j;
