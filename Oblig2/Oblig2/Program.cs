@@ -16,15 +16,17 @@ namespace Oblig2
         {
     
             int[,] graph = GenerateGraph.genGraph(500, 9);
-            int[][] pop = BirthPopulation.makeFirstPopulation(20, graph);
+            int[][] pop = BirthPopulation.makeFirstPopulation(100, graph);
             List<int[]> newGeneration = CreateList.createLinkedList(pop);
             int[][] pairs;
             int[][] birthcontroll = new int [pop.Length*2][];
             int[] popFitness;
             int[][] tinker;
             bool done = false;
+            int itterations = 0;
             int teller = 0;
             int currentResult;
+            List<int> results = new List<int>();
             int previousResult = 0;
 
             while (!done)
@@ -43,11 +45,12 @@ namespace Oblig2
                 Console.WriteLine();
 
                 currentResult = popFitness[0];
+                results.Add(popFitness[0]);
 
                 if (currentResult == previousResult)
                     teller++;
 
-                if (teller > 10)
+                if (teller > 1000)
                 {
                     done = true;
                     break;
@@ -57,7 +60,9 @@ namespace Oblig2
                     teller = 0;
 
                 previousResult = currentResult;
+                itterations++;
             }
+            Console.WriteLine("Antall itterasjoner" + itterations);
             /*for (int i = 0; i < 20; i++)
      {
          pairs = SelectMates.pairMates(newGeneration);
