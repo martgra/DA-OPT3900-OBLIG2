@@ -10,7 +10,7 @@ namespace Oblig2
     {
         public static int[][] makeFirstPopulation(int[,] nodeNet)
         {
-            int initialPopSize = 100;
+            int initialPopSize = 10;
             int nodeAmount = nodeNet.GetLength(0); //minst 500 som krav fra oppgaven
             int[][] population = new int[initialPopSize][]; //*2 for å sikkre partall
             int i, j;
@@ -23,7 +23,7 @@ namespace Oblig2
 
                 for (j = 0; j < nodeAmount; j++)
                 {
-                    if (i < initialPopSize) //for de 10 første
+                    if (i < initialPopSize/2) //for de 10 første
                     {
                         population[i][j] = color.Next(0, 3); //0 = svart, 1 = hvit, 2 = rød
                     }
