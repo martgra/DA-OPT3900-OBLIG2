@@ -23,7 +23,7 @@ namespace Oblig2
 
                 for (j = 0; j < nodeAmount; j++)
                 {
-                    if (i < initialPopSize/2) //for de 10 første
+                    if (i < initialPopSize) //for de 10 første
                     {
                         population[i][j] = color.Next(0, 3); //0 = svart, 1 = hvit, 2 = rød
                     }
