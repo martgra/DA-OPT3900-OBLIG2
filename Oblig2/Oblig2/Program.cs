@@ -20,60 +20,71 @@ namespace Oblig2
             string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             int itterasjoner = 20000;
             int repetisjoner = 200;
-            int[,] descriptives1 = new int[repetisjoner, itterasjoner+1];
+            /*int[,] descriptives1 = new int[repetisjoner, itterasjoner+1];
             int[,] descriptives2 = new int[repetisjoner, itterasjoner+1];
             int[,] descriptives3 = new int[repetisjoner, itterasjoner+1];
             int[,] descriptives4 = new int[repetisjoner, itterasjoner+1];
-            int[,] descriptives5 = new int[repetisjoner, itterasjoner+1];
+            int[,] descriptives5 = new int[repetisjoner, itterasjoner+1];*/
+            int[,] descriptives6 = new int[repetisjoner, itterasjoner + 1];
 
             for (int x = 0; x < repetisjoner; x++)
             {
                 int[,] graph = GenerateGraph.genGraph(500, 9);
                 int[][] pop1 = BirthPopulation.makeFirstPopulation(10, graph);
-                int[][] pop2 = CopyArray.CopyArrayLinq(pop1);
+               /* int[][] pop2 = CopyArray.CopyArrayLinq(pop1);
                 int[][] pop3 = CopyArray.CopyArrayLinq(pop1);
                 int[][] pop4 = CopyArray.CopyArrayLinq(pop1);
-                int[][] pop5 = CopyArray.CopyArrayLinq(pop1);
-
+                int[][] pop5 = CopyArray.CopyArrayLinq(pop1);*/
+                int[][] pop6 = CopyArray.CopyArrayLinq(pop1);
+/*
                 List<int[]> newGeneration1 = CreateList.createLinkedList(pop1);
                 List<int[]> newGeneration2 = CreateList.createLinkedList(pop2);
                 List<int[]> newGeneration3 = CreateList.createLinkedList(pop3);
-                List<int[]> newGeneration4 = CreateList.createLinkedList(pop2);
-                List<int[]> newGeneration5 = CreateList.createLinkedList(pop3);
+                List<int[]> newGeneration4 = CreateList.createLinkedList(pop4);
+                List<int[]> newGeneration5 = CreateList.createLinkedList(pop5);
+               
 
                 int[][] pairs1;
                 int[][] pairs2;
                 int[][] pairs3;
                 int[][] pairs4;
                 int[][] pairs5;
+               
 
                 int[][] birthcontroll1 = new int[pop1.Length * 2][];
                 int[][] birthcontroll2 = new int[pop2.Length * 2][];
                 int[][] birthcontroll3 = new int[pop3.Length * 2][];
                 int[][] birthcontroll4 = new int[pop4.Length * 2][];
                 int[][] birthcontroll5 = new int[pop5.Length * 2][];
+               
 
                 int[] popFitness1;
                 int[] popFitness2;
                 int[] popFitness3;
                 int[] popFitness4;
-                int[] popFitness5;
+                int[] popFitness5;*/
+                int[] popFitness6;
 
+                /*
                 int[][] tinker1;
                 int[][] tinker2;
                 int[][] tinker3;
                 int[][] tinker4;
                 int[][] tinker5;
+            
 
                 int result1 = 0;
                 int result2 = 0;
                 int result3 = 0;
                 int result4 = 0;
-                int result5 = 0;
+                int result5 = 0;*/
+
+
+
+               /*
 
                 // nr 1
-                descriptives1[x,0] = Fitness.fitness(graph, RankPopulation.rankSort(pop1, Fitness.fitness(graph, pop1)))[0];
-
+                descriptives1[x, 0] = Fitness.fitness(graph, RankPopulation.rankSort(pop1, Fitness.fitness(graph, pop1)))[0];
                 for (int i = 0; i < itterasjoner; i++)
                 {
                     pairs1 = SelectMates.pairMates(newGeneration1);
@@ -153,12 +164,31 @@ namespace Oblig2
                     descriptives5[x, i+1] = popFitness5[0];
 
                
+                }*/
+
+                //nr 6 random
+                descriptives6[x, 0] = Fitness.fitness(graph, RankPopulation.rankSort(pop6, Fitness.fitness(graph, pop6)))[0];
+                for (int i = 0; i < itterasjoner; i++)
+                {
+                    pop6 = BirthPopulation.makeFirstPopulation(10, graph);
+                    popFitness6 = Fitness.fitness(graph, pop6);
+                    pop6 = RankPopulation.rankSort(pop6, popFitness6);
+                    popFitness6 = Fitness.fitness(graph, pop6);
+                    if (descriptives6[x, i] < popFitness6[0])
+                    {
+                        descriptives6[x, i + 1] = popFitness6[0];
+                    }
+                    else
+                    {
+                        descriptives6[x, i + 1] = descriptives6[x, i];
+                    }
+
                 }
             }
 
-    
 
-            double[] average1 = Average.CalcualteAverage(descriptives1);
+
+            /*double[] average1 = Average.CalcualteAverage(descriptives1);
             double[] average2 = Average.CalcualteAverage(descriptives2);
             double[] average3 = Average.CalcualteAverage(descriptives3);
             double[] average4 = Average.CalcualteAverage(descriptives4);
@@ -168,9 +198,13 @@ namespace Oblig2
             double[] sd2 = StandardDeviation.SD(average2, descriptives2);
             double[] sd3 = StandardDeviation.SD(average3, descriptives3);
             double[] sd4 = StandardDeviation.SD(average4, descriptives4);
-            double[] sd5 = StandardDeviation.SD(average5, descriptives5);
-            for (int z = 0; z < average1.Length; z++)
-            {
+            double[] sd5 = StandardDeviation.SD(average5, descriptives5);*/
+
+            double[] average6 = Average.CalcualteAverage(descriptives6);
+            double[] sd6 = StandardDeviation.SD(average6, descriptives6);
+
+            for (int z = 0; z < average6.Length; z++)
+            {/*
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(mydocpath + @"\average1.txt", true))
             {
@@ -226,6 +260,17 @@ namespace Oblig2
                     file.WriteLine(sd5[z]);
                 }
 
+                */
+                using (System.IO.StreamWriter file =
+    new System.IO.StreamWriter(mydocpath + @"\average6.txt", true))
+                {
+                    file.WriteLine(average6[z]);
+                }
+                using (System.IO.StreamWriter file =
+        new System.IO.StreamWriter(mydocpath + @"\sd6.txt", true))
+                {
+                    file.WriteLine(sd6[z]);
+                }
 
             }
             
